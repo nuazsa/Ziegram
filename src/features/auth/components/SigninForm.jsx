@@ -10,9 +10,8 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import CssBaseline from '@mui/material/CssBaseline';
 import Alert from '@mui/material/Alert';
-// import backgroundImage from './background.jpg';
 
-const backgroundImage = 'https://picsum.photos/800/600';
+const backgroundImage = 'https://picsum.photos/1920/1080';
 
 export default function SigninForm({ onSubmit }) {
   const [form, setForm] = useState({ email: '', password: '', rememberMe: false });
@@ -62,29 +61,18 @@ export default function SigninForm({ onSubmit }) {
       <CssBaseline />
       
       <Grid
-        item
-        xs={false}
-        sm={5}
-        md={7}
+        size={{ xs: 12, sm: 7, md: 8 }}
         sx={{
+          display: { xs: 'none', sm: 'block' },
           backgroundImage: `url(${backgroundImage})`,
           backgroundRepeat: 'no-repeat',
-          backgroundColor: (t) =>
-            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          display: { xs: 'none', sm: 'block' },
         }}
       />
 
       <Grid 
-        item 
-        xs={12}
-        sm={7}  
-        md={5}  
-        component={Paper} 
-        elevation={6}
-        square 
+        size={{ xs: 12, sm: 5, md: 4 }}
         sx={{ 
           display: 'flex',
           flexDirection: 'column',
@@ -107,6 +95,7 @@ export default function SigninForm({ onSubmit }) {
           <Typography component="h1" variant="h5" sx={{ mb: {xs: 2, sm: 3} }}>
             Sign In
           </Typography>
+
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, width: '100%' }}>
             {alertInfo.show && (
               <Alert
@@ -135,6 +124,7 @@ export default function SigninForm({ onSubmit }) {
               onChange={handleChange}
               error={alertInfo.show && alertInfo.severity === 'error' && !form.email}
             />
+
             <TextField
               variant="outlined"
               margin="normal"
@@ -149,6 +139,7 @@ export default function SigninForm({ onSubmit }) {
               onChange={handleChange}
               error={alertInfo.show && alertInfo.severity === 'error' && !form.password}
             />
+
             <FormControlLabel
               control={
                 <Checkbox 
@@ -162,6 +153,7 @@ export default function SigninForm({ onSubmit }) {
               label="Ingat saya"
               sx={{ mt: 1 }}
             />
+
             <Button
               type="submit"
               fullWidth
@@ -170,18 +162,21 @@ export default function SigninForm({ onSubmit }) {
             >
               Sign In
             </Button>
+
             <Grid container spacing={1}>
-              <Grid item xs>
+              <Grid>
                 <Link href="#" variant="body2">
                   Lupa password?
                 </Link>
               </Grid>
-              <Grid item>
+
+              <Grid>
                 <Link href="#" variant="body2"> 
                   {"Belum punya akun? Daftar"}
                 </Link>
               </Grid>
             </Grid>
+
             <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: {xs: 3, sm: 5} }}>
               {'Copyright © '}
               <Link color="inherit" href="#">
