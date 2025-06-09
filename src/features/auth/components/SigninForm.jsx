@@ -10,6 +10,7 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import CssBaseline from '@mui/material/CssBaseline';
 import Alert from '@mui/material/Alert';
+import FacebookIcon from '@mui/icons-material/Facebook';
 
 const backgroundImage = 'https://picsum.photos/1920/1080';
 
@@ -92,10 +93,6 @@ export default function SigninForm({ onSubmit }) {
             maxWidth: 400,
           }}
         >
-          <Typography component="h1" variant="h5" sx={{ mb: {xs: 2, sm: 3} }}>
-            Sign In
-          </Typography>
-
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, width: '100%' }}>
             {alertInfo.show && (
               <Alert
@@ -140,39 +137,62 @@ export default function SigninForm({ onSubmit }) {
               error={alertInfo.show && alertInfo.severity === 'error' && !form.password}
             />
 
-            <FormControlLabel
-              control={
-                <Checkbox 
-                  value="remember" 
-                  color="primary" 
-                  name="rememberMe"
-                  checked={form.rememberMe}
-                  onChange={handleChange}
-                />
-              }
-              label="Ingat saya"
-              sx={{ mt: 1 }}
-            />
-
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: {xs: 2, sm: 3}, mb: 2, py: 1.2 }}
             >
-              Sign In
+              Log In
             </Button>
 
-            <Grid container spacing={1}>
+            <Box sx={{ display: 'flex', alignItems: 'center', my: 2 }}>
+              <Box sx={{ flexGrow: 1, height: 1, borderBottom: '1px solid #666' }} />
+              <Typography variant="body2" sx={{ mx: 2, color: '#666' }}>OR</Typography>
+              <Box sx={{ flexGrow: 1, height: 1, borderBottom: '1px solid #666' }} />
+            </Box>
+
+            <Button
+              fullWidth
+              variant="text"
+              startIcon={<FacebookIcon />}
+              sx={{ 
+                mb: 2, 
+                py: 1.2,
+                color: '#1877F2',
+                textTransform: 'none',
+                '&:hover': {
+                  backgroundColor: 'transparent'
+                },
+                '&:active': {
+                  backgroundColor: 'transparent'
+                },
+                '&:focus': {
+                  backgroundColor: 'transparent'
+                }
+              }}
+              onClick={() => {
+                setAlertInfo({
+                  show: true,
+                  severity: 'info',
+                  message: 'Fitur ini belum tersedia.',
+                });
+              }}
+            >
+              Log in with Facebook
+            </Button>
+
+            <Grid container spacing={1} sx={{ alignItems: 'center', justifyContent: 'center' }}>
               <Grid>
                 <Link href="#" variant="body2">
-                  Lupa password?
+                  Forgot password?
                 </Link>
               </Grid>
 
-              <Grid>
+              <Grid sx={{ mx: 2, color: '#666', alignItems: 'center' }}>
+                Don't have an account? 
                 <Link href="#" variant="body2"> 
-                  {"Belum punya akun? Daftar"}
+                  {"Sign up"}
                 </Link>
               </Grid>
             </Grid>

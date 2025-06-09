@@ -22,7 +22,7 @@ export default function App() {
       <CssBaseline />
       <Router>
         <Routes>
-          <Route path="/signin" element={<SigninPage />} />
+          <Route path="/" element={<SigninPage />} />
           <Route path="*" element={<NotfoundPage />} />
         </Routes>
       </Router>
